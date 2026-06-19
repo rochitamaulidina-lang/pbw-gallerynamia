@@ -7,20 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class BahanBaku extends Model
 {
     protected $table = 'bahan_baku';
-    protected $primaryKey ='no_bahan';
+    protected $primaryKey = 'no_bahan';  
+    public $incrementing = false;        
+    protected $keyType = 'string';       
 
     public $timestamps = false;
-
-    protected $guarded =[];
-
-    //relasi
-    public function detail_barang()
-    {
-        return $this->hasMany(DetailBarang::class,'no_bahan');
-    }
-    public function detail_beli()
-    {
-        return $this->hasMany(DetailBeli::class,'no_bahan');
-    }
-
+    
+    protected $fillable = [
+        'no_bahan',
+        'nama_bahan',
+        'stok_bahan',
+        'satuan',
+        'stok_kritis',
+        'harga_beli',
+    ];
 }

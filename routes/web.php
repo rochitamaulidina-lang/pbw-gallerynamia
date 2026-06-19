@@ -50,5 +50,14 @@ Route::middleware(['auth', 'role:pemilik'])->group(function () {
     Route::resource('barang', BarangController::class);
     Route::resource('pembelian', PembelianController::class);
     Route::resource('detail-pembelian', DetailPembelianController::class);
-    Route::resource('detail-barang', DetailBarangController::class);
+    
+// ========== DETAIL BARANG ==========
+    Route::get('/detail-barang', [DetailBarangController::class, 'index'])->name('detail-barang.index');
+    Route::get('/detail-barang/create', [DetailBarangController::class, 'create'])->name('detail-barang.create');
+    Route::post('/detail-barang', [DetailBarangController::class, 'store'])->name('detail-barang.store');
+    Route::get('/detail-barang/{no_barang}', [DetailBarangController::class, 'show'])->name('detail-barang.show');
+    Route::get('/detail-barang/{id}/edit', [DetailBarangController::class, 'edit'])->name('detail-barang.edit');  
+    Route::put('/detail-barang/{id}', [DetailBarangController::class, 'update'])->name('detail-barang.update');
+    Route::get('/detail-barang/{no_barang}/cetak', [DetailBarangController::class, 'cetak'])->name('detail-barang.cetak');
+    Route::delete('/detail-barang/{id}', [DetailBarangController::class, 'destroy'])->name('detail-barang.destroy');
 });
