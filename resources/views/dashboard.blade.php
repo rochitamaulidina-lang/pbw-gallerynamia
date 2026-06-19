@@ -379,6 +379,24 @@
             background: #c82333;
             color: white;
         }
+
+        .dropdown-menu {
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border: none;
+            padding: 8px 0;
+        }
+        .dropdown-item {
+            font-size: 13px;
+            padding: 8px 20px;
+        }
+        .dropdown-item i {
+            width: 20px;
+            margin-right: 8px;
+        }
+        .dropdown-item:hover {
+            background: #f8f9fa;
+        }
     </style>
 </head>
 <body>
@@ -389,20 +407,36 @@
             <ul class="list-unstyled components mb-4">
                 <li class="active"><a href="{{ route('dashboard') }}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
 
-                {{-- Menu untuk PEMILIK (semua) --}}
-                @if(auth()->user()->role == 'pemilik')
-                    <li><a href="{{ route('pegawai.index') }}"><i class="fas fa-user-shield"></i> Pegawai</a></li>
-                    <li><a href="{{ route('supplier.index') }}"><i class="fas fa-handshake"></i> Supplier</a></li>
-                    <li><a href="{{ route('bahanbaku.index') }}"><i class="fas fa-box-open"></i> Bahan Baku</a></li>
-                    <li><a href="{{ route('barang.index') }}"><i class="fas fa-boxes"></i> Barang</a></li>
-                    <li><a href="{{ route('pembelian.index') }}"><i class="fas fa-cart-plus"></i> Pembelian</a></li>
-                   
-                @endif
+                 {{-- 1. Pegawai (khusus pemilik) --}}
+                    @if(auth()->user()->role == 'pemilik')
+                        <li><a href="{{ route('pegawai.index') }}"><i class="fas fa-user-shield"></i> Pegawai</a></li>
+                    @endif
 
-                {{-- Menu untuk SEMUA ROLE (admin & pemilik) --}}
-                <li><a href="{{ route('pelanggan.index') }}"><i class="fas fa-user-group"></i> Pelanggan</a></li>
-                <li><a href="{{ route('penjualan.index') }}"><i class="fas fa-store"></i> Penjualan</a></li>
-               
+                    {{-- 2. Pelanggan (semua role) --}}
+                    <li><a href="{{ route('pelanggan.index') }}"><i class="fas fa-user-group"></i> Pelanggan</a></li>
+
+                    {{-- 3. Supplier (khusus pemilik) --}}
+                    @if(auth()->user()->role == 'pemilik')
+                        <li><a href="{{ route('supplier.index') }}"><i class="fas fa-handshake"></i> Supplier</a></li>
+                    @endif
+
+                    {{-- 4. Bahan Baku (khusus pemilik) --}}
+                    @if(auth()->user()->role == 'pemilik')
+                        <li><a href="{{ route('bahanbaku.index') }}"><i class="fas fa-box-open"></i> Bahan Baku</a></li>
+                    @endif
+
+                    {{-- 5. Barang (khusus pemilik) --}}
+                    @if(auth()->user()->role == 'pemilik')
+                        <li><a href="{{ route('barang.index') }}"><i class="fas fa-boxes"></i> Barang</a></li>
+                    @endif
+
+                    {{-- 6. Pembelian (khusus pemilik) --}}
+                    @if(auth()->user()->role == 'pemilik')
+                        <li><a href="{{ route('pembelian.index') }}"><i class="fas fa-cart-plus"></i> Pembelian</a></li>
+                    @endif
+
+                    {{-- 7. Penjualan (semua role) --}}
+                    <li><a href="{{ route('penjualan.index') }}"><i class="fas fa-store"></i> Penjualan</a></li>
 
                 <li><a href="#" onclick="showLogoutModal(event)"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
             </ul>
@@ -417,21 +451,55 @@
                 </button>
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active"><a class="nav-link" href="#">Dashboard</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="#">Dashboard</a></li>
 
-                        {{-- Navbar untuk PEMILIK --}}
-                        @if(auth()->user()->role == 'pemilik')
-                            <li class="nav-item"><a class="nav-link" href="{{ route('pegawai.index') }}">Pegawai</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ route('supplier.index') }}">Supplier</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ route('bahanbaku.index') }}">Bahan Baku</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ route('barang.index') }}">Barang</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ route('pembelian.index') }}">Pembelian</a></li>
-                        @endif
+                            {{-- Pegawai (khusus pemilik) --}}
+                            @if(auth()->user()->role == 'pemilik')
+                                <li class="nav-item"><a class="nav-link" href="{{ route('pegawai.index') }}">Pegawai</a></li>
+                            @endif
 
-                        {{-- Navbar untuk SEMUA ROLE --}}
-                        <li class="nav-item"><a class="nav-link" href="{{ route('pelanggan.index') }}">Pelanggan</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('penjualan.index') }}">Penjualan</a></li>
-                    </ul>
+                            {{-- Pelanggan (semua role) --}}
+                            <li class="nav-item"><a class="nav-link" href="{{ route('pelanggan.index') }}">Pelanggan</a></li>
+
+                            {{-- Supplier (khusus pemilik) --}}
+                            @if(auth()->user()->role == 'pemilik')
+                                <li class="nav-item"><a class="nav-link" href="{{ route('supplier.index') }}">Supplier</a></li>
+                            @endif
+
+                            {{-- Bahan Baku (khusus pemilik) --}}
+                            @if(auth()->user()->role == 'pemilik')
+                                <li class="nav-item"><a class="nav-link" href="{{ route('bahanbaku.index') }}">Bahan Baku</a></li>
+                            @endif
+
+                            {{-- Barang (khusus pemilik) --}}
+                            @if(auth()->user()->role == 'pemilik')
+                                <li class="nav-item"><a class="nav-link" href="{{ route('barang.index') }}">Barang</a></li>
+                            @endif
+
+                            {{-- Pembelian (khusus pemilik) --}}
+                            @if(auth()->user()->role == 'pemilik')
+                                <li class="nav-item"><a class="nav-link" href="{{ route('pembelian.index') }}">Pembelian</a></li>
+                            @endif
+
+                            {{-- Penjualan (semua role) --}}
+                            <li class="nav-item"><a class="nav-link" href="{{ route('penjualan.index') }}">Penjualan</a></li>
+
+                            {{-- Profile Dropdown --}}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-user-circle"></i> {{ auth()->user()->name }}
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('profile.edit') }}">
+                                        <i class="fas fa-user"></i> My Profile
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#" onclick="showLogoutModal(event)">
+                                        <i class="fas fa-sign-out-alt"></i> Logout
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
                 </div>
             </div>
         </nav>

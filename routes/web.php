@@ -35,6 +35,13 @@ Route::get('/tes-role', function () {
 })->middleware(['auth', 'role:pemilik']);
 
 
+// ========== ROUTE UNTUK SEMUA USER YANG LOGIN ==========
+Route::middleware(['auth'])->group(function () {
+    Route::resource('pelanggan', PelangganController::class);
+    Route::resource('penjualan', PenjualanController::class);
+    Route::resource('detail-penjualan', DetailPenjualanController::class);
+});
+
 // ========== ROUTE UNTUK PEMILIK (BISA SEMUA) ==========
 Route::middleware(['auth', 'role:pemilik'])->group(function () {
     Route::resource('pegawai', PegawaiController::class);
@@ -44,17 +51,4 @@ Route::middleware(['auth', 'role:pemilik'])->group(function () {
     Route::resource('pembelian', PembelianController::class);
     Route::resource('detail-pembelian', DetailPembelianController::class);
     Route::resource('detail-barang', DetailBarangController::class);
-    
-    // Pemilik juga bisa mengakses pelanggan & penjualan (boleh)
-    Route::resource('pelanggan', PelangganController::class);
-    Route::resource('penjualan', PenjualanController::class);
-    Route::resource('detail-penjualan', DetailPenjualanController::class);
 });
-
-// ========== ROUTE UNTUK ADMIN (HANYA PELANGGAN, PENJUALAN, DETAIL PENJUALAN) ==========
-Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::resource('pelanggan', PelangganController::class);
-    Route::resource('penjualan', PenjualanController::class);
-    Route::resource('detail-penjualan', DetailPenjualanController::class);
-});
-
