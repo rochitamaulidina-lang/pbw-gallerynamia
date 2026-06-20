@@ -415,25 +415,18 @@
                     {{-- 2. Pelanggan (semua role) --}}
                     <li><a href="{{ route('pelanggan.index') }}"><i class="fas fa-user-group"></i> Pelanggan</a></li>
 
-                    {{-- 3. Supplier (khusus pemilik) --}}
-                    @if(auth()->user()->role == 'pemilik')
-                        <li><a href="{{ route('supplier.index') }}"><i class="fas fa-handshake"></i> Supplier</a></li>
-                    @endif
+                    {{-- 3. Supplier (semua role) --}}
+                    <li><a href="{{ route('supplier.index') }}"><i class="fas fa-handshake"></i> Supplier</a></li>
+                    
 
-                    {{-- 4. Bahan Baku (khusus pemilik) --}}
-                    @if(auth()->user()->role == 'pemilik')
-                        <li><a href="{{ route('bahanbaku.index') }}"><i class="fas fa-box-open"></i> Bahan Baku</a></li>
-                    @endif
+                    {{-- 4. Bahan Baku (semua role) --}}
+                    <li><a href="{{ route('bahanbaku.index') }}"><i class="fas fa-box-open"></i> Bahan Baku</a></li>
 
-                    {{-- 5. Barang (khusus pemilik) --}}
-                    @if(auth()->user()->role == 'pemilik')
-                        <li><a href="{{ route('barang.index') }}"><i class="fas fa-boxes"></i> Barang</a></li>
-                    @endif
+                    {{-- 5. Barang (semua role) --}}
+                    <li><a href="{{ route('barang.index') }}"><i class="fas fa-boxes"></i> Barang</a></li>
 
-                    {{-- 6. Pembelian (khusus pemilik) --}}
-                    @if(auth()->user()->role == 'pemilik')
-                        <li><a href="{{ route('pembelian.index') }}"><i class="fas fa-cart-plus"></i> Pembelian</a></li>
-                    @endif
+                    {{-- 6. Pembelian (semua role) --}}
+                    <li><a href="{{ route('pembelian.index') }}"><i class="fas fa-cart-plus"></i> Pembelian</a></li>
 
                     {{-- 7. Penjualan (semua role) --}}
                     <li><a href="{{ route('penjualan.index') }}"><i class="fas fa-store"></i> Penjualan</a></li>
@@ -461,25 +454,17 @@
                             {{-- Pelanggan (semua role) --}}
                             <li class="nav-item"><a class="nav-link" href="{{ route('pelanggan.index') }}">Pelanggan</a></li>
 
-                            {{-- Supplier (khusus pemilik) --}}
-                            @if(auth()->user()->role == 'pemilik')
+                            {{-- Supplier (semua role) --}}
                                 <li class="nav-item"><a class="nav-link" href="{{ route('supplier.index') }}">Supplier</a></li>
-                            @endif
 
-                            {{-- Bahan Baku (khusus pemilik) --}}
-                            @if(auth()->user()->role == 'pemilik')
+                            {{-- Bahan Baku (semua role) --}}
                                 <li class="nav-item"><a class="nav-link" href="{{ route('bahanbaku.index') }}">Bahan Baku</a></li>
-                            @endif
 
-                            {{-- Barang (khusus pemilik) --}}
-                            @if(auth()->user()->role == 'pemilik')
+                            {{-- Barang (semua role) --}}
                                 <li class="nav-item"><a class="nav-link" href="{{ route('barang.index') }}">Barang</a></li>
-                            @endif
 
-                            {{-- Pembelian (khusus pemilik) --}}
-                            @if(auth()->user()->role == 'pemilik')
+                            {{-- Pembelian (semua role) --}}
                                 <li class="nav-item"><a class="nav-link" href="{{ route('pembelian.index') }}">Pembelian</a></li>
-                            @endif
 
                             {{-- Penjualan (semua role) --}}
                             <li class="nav-item"><a class="nav-link" href="{{ route('penjualan.index') }}">Penjualan</a></li>
