@@ -40,12 +40,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('pelanggan', PelangganController::class);
     Route::resource('penjualan', PenjualanController::class);
     Route::resource('detail-penjualan', DetailPenjualanController::class);
-});
-
-// ========== ROUTE UNTUK PEMILIK (BISA SEMUA) ==========
-Route::middleware(['auth', 'role:pemilik'])->group(function () {
-    Route::resource('pegawai', PegawaiController::class);
-    Route::resource('supplier', SupplierController::class);
+     Route::resource('supplier', SupplierController::class);
     Route::resource('bahanbaku', BahanBakuController::class);
     Route::resource('barang', BarangController::class);
     Route::resource('pembelian', PembelianController::class);
@@ -60,4 +55,11 @@ Route::middleware(['auth', 'role:pemilik'])->group(function () {
     Route::put('/detail-barang/{id}', [DetailBarangController::class, 'update'])->name('detail-barang.update');
     Route::get('/detail-barang/{no_barang}/cetak', [DetailBarangController::class, 'cetak'])->name('detail-barang.cetak');
     Route::delete('/detail-barang/{id}', [DetailBarangController::class, 'destroy'])->name('detail-barang.destroy');
+});
+
+
+// ========== ROUTE UNTUK PEMILIK (BISA SEMUA) ==========
+Route::middleware(['auth', 'role:pemilik'])->group(function () {
+    Route::resource('pegawai', PegawaiController::class);
+   
 });
