@@ -94,7 +94,7 @@
         .btn-delete { background: #dc3545; color: white; }
         .btn-delete:hover { background: #c82333; transform: translateY(-1px); color: white; }
         .btn-detail {
-            background: #17a2b8;
+            background: #394749;
             color: white;
             border-radius: 30px;
             padding: 3px 12px;
@@ -277,7 +277,7 @@
                             <td>Rp {{ number_format($b->harga_barang, 0, ',', '.') }}</td>
                             <td>
                                 <a href="{{ route('detail-barang.show', $b->no_barang) }}" class="btn btn-sm btn-detail">
-                                    <i class="fas fa-info-circle"></i> Detail
+                                    <i class="fa-solid fa-eye"></i> Detail
                                 </a>
                             </td>
                             <td style="white-space:nowrap;">
@@ -294,7 +294,7 @@
                             <td colspan="7" style="text-align:center; padding:20px;">Tidak ada data barang</td>
                         </tr>
                         @endforelse
-</tbody>
+                    </tbody>
                 </table>
             </div>
 

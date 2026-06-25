@@ -433,25 +433,25 @@
         }
 
         .btn-print {
-            background: #17a2b8;
+            background: #28a745;
             color: white;
             border-radius: 30px;
             padding: 5px 14px;
-            font-weight: 500;
             font-size: 0.7rem;
+            font-weight: 500;
+            border: none;
             transition: all 0.2s;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 5px;
-            border: none;
-            cursor: pointer;
         }
 
         .btn-print:hover {
-            background: #138496;
+            background: #218838;
             transform: translateY(-1px);
             color: white;
+            text-decoration: none;
         }
 
         .info-box {
@@ -666,6 +666,7 @@
 </head>
 
 <body>
+
     <div class="wrapper d-flex align-items-stretch">
         <nav id="sidebar">
             <div class="p-3 pt-3">
@@ -768,7 +769,7 @@
                         </div>
                         <div class="info-item">
                             <span class="label"><i class="fas fa-money-bill-wave"></i> Harga Jual:</span>
-                            <strong style="color:#28a745;">Rp {{ number_format($barang->harga_barang, 0, ',', '.') }}</strong>
+                            <strong style="color:#ff8c1a;">Rp {{ number_format($barang->harga_barang, 0, ',', '.') }}</strong>
                         </div>
                     </div>
                 </div>
@@ -808,7 +809,7 @@
                                 <td style="text-align:left;">{{ $d->bahanBaku->nama_bahan ?? '-' }}</td>
                                 <td>{{ $d->bahanBaku->satuan ?? '-' }}</td>
                                 <td>{{ number_format($d->qty_pakai, 0, ',', '.') }}</td>
-                                <td>Rp {{ number_format($d->harga_beli_bahan ?? 0, 0, ',', '.') }}</td>
+                                <td>Rp {{ number_format($d->bahanBaku->harga_beli ?? 0, 0, ',', '.') }}</td>
                                 <td>Rp {{ number_format($d->subtotal_bom, 0, ',', '.') }}</td>
                                 <td style="white-space:nowrap;">
                                     <a class="btn btn-sm-action btn-edit" href="{{ route('detail-barang.edit', $barang->no_barang . '-' . $d->no_bahan) }}">
