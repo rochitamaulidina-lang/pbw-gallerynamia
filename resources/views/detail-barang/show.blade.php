@@ -868,9 +868,9 @@
                 </div>
                 <div class="modal-body">
                     <div class="modal-icon"><i class="fas fa-trash-alt"></i></div>
-                    <h5>Hapus Detail BOM</h5>
-                    <p>Yakin mau hapus detail BOM ini?</p>
-                    <p class="warning-text">Aksi ini tidak bisa dibatalkan!</p>
+                    <h5>Delete Data</h5>
+                    <p>Are you sure you want to delete this data?</p>
+                    <p>This action cannot be undone.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn-cancel-modal" data-dismiss="modal">Batal</button>

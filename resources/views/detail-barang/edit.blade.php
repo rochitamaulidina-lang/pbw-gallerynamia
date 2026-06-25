@@ -132,8 +132,7 @@
                 <li><a href="{{ route('pelanggan.index') }}"><i class="fas fa-user-group"></i> Pelanggan</a></li>
                 <li><a href="{{ route('supplier.index') }}"><i class="fas fa-handshake"></i> Supplier</a></li>
                 <li><a href="{{ route('bahanbaku.index') }}"><i class="fas fa-box-open"></i> Bahan Baku</a></li>
-                <li><a href="{{ route('barang.index') }}"><i class="fas fa-boxes"></i> Barang</a></li>
-                <li class="active"><a href="{{ route('detail-barang.index') }}"><i class="fas fa-cubes"></i> Detail Barang</a></li>
+                <li class="active"><a href="{{ route('barang.index') }}"><i class="fas fa-boxes"></i> Barang</a></li>
                 <li><a href="{{ route('pembelian.index') }}"><i class="fas fa-cart-plus"></i> Pembelian</a></li>
                 <li><a href="{{ route('penjualan.index') }}"><i class="fas fa-store"></i> Penjualan</a></li>
                 <li><a href="#" onclick="showLogoutModal(event)"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
@@ -156,8 +155,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('pelanggan.index') }}">Pelanggan</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('supplier.index') }}">Supplier</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('bahanbaku.index') }}">Bahan Baku</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('barang.index') }}">Barang</a></li>
-                        <li class="nav-item active"><a class="nav-link" href="{{ route('detail-barang.index') }}">Detail Barang</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="{{ route('barang.index') }}">Barang</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('pembelian.index') }}">Pembelian</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('penjualan.index') }}">Penjualan</a></li>
                         <li class="nav-item dropdown">
@@ -233,7 +231,7 @@
                         <a href="{{ route('detail-barang.show', $barang->no_barang) }}" class="btn btn-action btn-back">
                             <i class="fas fa-arrow-left"></i> Kembali
                         </a>
-                        <button type="submit" class="btn btn-action btn-update">
+                        <button type="submit" id="submitBtn" class="btn btn-action btn-update">
                             <i class="fas fa-save"></i> Simpan Perubahan
                         </button>
                     </div>
