@@ -6,21 +6,26 @@ use Illuminate\Database\Eloquent\Model;
 
 class DetailPenjualan extends Model
 {
-    protected $table = 'detail_penjual';
+    protected $table = 'detail_penjualan';
+    public $incrementing = false;  
     public $timestamps = false;
 
-    protected $guarded =[];
+    protected $fillable = [
+        'no_jual',
+        'no_barang',
+        'qty_jual',
+        'subtotal_jual',
+    ];
 
-    public $incrementing = false;
+    protected $primaryKey = null;
 
-    //relasi
     public function penjualan()
     {
-        return $this->belongsTo(Penjualan::class,'no_jual');
+        return $this->belongsTo(Penjualan::class, 'no_jual', 'no_jual');
     }
+
     public function barang()
     {
-        return $this->belongsTo(Barang::class,'no_barang');
+        return $this->belongsTo(Barang::class, 'no_barang', 'no_barang');
     }
 }
-

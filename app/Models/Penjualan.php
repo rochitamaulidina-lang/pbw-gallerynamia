@@ -7,23 +7,33 @@ use Illuminate\Database\Eloquent\Model;
 class Penjualan extends Model
 {
     protected $table = 'penjualan';
-    protected $primaryKey ='no_jual';
-
+    protected $primaryKey = 'no_jual';
+    public $incrementing = false;  
+    protected $keyType = 'int';
     public $timestamps = false;
 
-    protected $guarded =[];
+    protected $fillable = [
+        'no_jual',
+        'no_pelanggan',
+        'no_pegawai',
+        'tgl_jual',
+        'dp',
+        'sisa_bayar',
+        'total_jual',
+    ];
 
-    //relasi
     public function pelanggan()
     {
-        return $this->belongsTo(Pelanggan::class,'no_pelanggan');
+        return $this->belongsTo(Pelanggan::class, 'no_pelanggan');
     }
+
     public function pegawai()
     {
-        return $this->belongsTo(Pegawai::class,'no_pegawai');
+        return $this->belongsTo(Pegawai::class, 'no_pegawai');
     }
-    public function detail_penjualan()
+
+    public function detailPenjualan()
     {
-        return $this->hasMany(DetailPenjualan::class,'no_jual');
+        return $this->hasMany(DetailPenjualan::class, 'no_jual');
     }
 }
