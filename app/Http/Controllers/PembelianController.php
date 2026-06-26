@@ -41,7 +41,7 @@ class PembelianController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'no_beli' => 'required|unique:pembelian,no_beli',  // <-- TAMBAHIN INI!
+            'no_beli' => 'required|unique:pembelian,no_beli',  
             'no_supplier' => 'required|exists:supplier,no_supplier',
             'no_pegawai' => 'nullable|exists:pegawai,no_pegawai',
             'tgl_beli' => 'required|date',
@@ -51,7 +51,7 @@ class PembelianController extends Controller
 
         DB::transaction(function () use ($request) {
             $pembelian = Pembelian::create([
-                'no_beli' => $request->no_beli,  // <-- PAKE INPUT DARI FORM!
+                'no_beli' => $request->no_beli,  
                 'no_supplier' => $request->no_supplier,
                 'no_pegawai' => $request->no_pegawai,
                 'tgl_beli' => $request->tgl_beli,

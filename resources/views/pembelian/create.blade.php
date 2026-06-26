@@ -241,7 +241,6 @@
                     <div class="form-group-custom">
                             <label><i class="fas fa-hashtag"></i> NO BELI</label>
                             <input type="text" name="no_beli" class="form-control-custom" placeholder="Masukan No Unik Pembelian" value="{{ old('no_beli') }}">
-                            <small class="text-muted">Biarkan kosong untuk nomor otomatis</small>
                         </div>
 
                     <div class="form-group-custom">
